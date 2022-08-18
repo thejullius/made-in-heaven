@@ -1,14 +1,13 @@
 .container
-  .h1 Grupos de compras
+  .h1.mb-3 Grupos de compras
 
-  table.table
+  table.table.table-hover
     thead
       tr
-        th #
-        th Nome
-        th Data
-        th Status
+        th.col Nome
+        th.col Data
+        th.col Status
     tbody
       = render @buying_groups
 
-  = link_to 'Novo Grupo de Compras', new_buying_group_path, class: 'btn'
+  = link_to 'Novo Grupo de Compras', new_buying_group_path, class: 'btn btn-primary mt-2'

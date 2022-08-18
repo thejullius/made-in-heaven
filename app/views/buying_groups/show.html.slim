@@ -1,16 +1,29 @@
 .container
-  .h1 = @buying_group.name
-  .h1 = @buying_group.date
-  .h1 = @buying_group.status
+  .row
+    .col-4
+      .card.border-primary.mb-3
+        .card-header.h3 Infomações
+        dl.row.card-body
+          dt.col-sm-6 Nome
+          dd.col-sm-6 = @buying_group.name
+          dt.col-sm-6 Data
+          dd.col-sm-6 = l(@buying_group.date)
+          dt.col-sm-6 Status
+          dd.col-sm-6 = t(@buying_group.status, scope: 'enums.buying_group.status')
 
-  table.table
-    thead
-    tr
-      th Descrição
-      th Valor
-      th Quantidade
-    tbody
-      = render @batches
-
-  = link_to 'Editar grupo de Compra', edit_buying_group_path(@buying_group), class: 'btn'
-  = link_to 'Adicionar Lote', new_buying_group_batch_path(@buying_group), class: 'btn'
+    .col-8
+      - if @batches.size.positive?
+        .h1 Lotes
+        table.table.table-hover
+          thead
+          tr
+            th.col Descrição
+            th.col Valor
+            th.col Quantidade
+          tbody
+            = render @batches
+      - else
+        .h1 Sem lotes cadastrados
+      .d-flex.flex-row
+        = link_to 'Editar grupo de Compra', edit_buying_group_path(@buying_group), class: 'btn btn-primary', style: 'margin-right: 10px'
+        = link_to 'Adicionar Lote', new_buying_group_batch_path(@buying_group), class: 'btn btn-primary'

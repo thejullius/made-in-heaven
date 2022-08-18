@@ -1,8 +1,7 @@
 class BuyingGroup < ApplicationRecord
-  validates :name, presence: true
-  validates :date, presence: true
+  validates :name, :date, presence: true
 
   has_many :batches
 
-  enum status: { paused: 0, active: 1, finished: 2 }
+  enum status: { inactive: 0, active: 1, finished: 2 }
 end
