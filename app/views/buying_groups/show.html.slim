@@ -1,0 +1,16 @@
+.container
+  .h1 = @buying_group.name
+  .h1 = @buying_group.date
+  .h1 = @buying_group.status
+
+  table.table
+    thead
+    tr
+      th Descrição
+      th Valor
+      th Quantidade
+    tbody
+      = render @batches
+
+  = link_to 'Editar grupo de Compra', edit_buying_group_path(@buying_group), class: 'btn'
+  = link_to 'Adicionar Lote', new_buying_group_batch_path(@buying_group), class: 'btn'

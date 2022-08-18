@@ -1,0 +1,14 @@
+.container
+  .h1 Grupos de compras
+
+  table.table
+    thead
+      tr
+        th #
+        th Nome
+        th Data
+        th Status
+    tbody
+      = render @buying_groups
+
+  = link_to 'Novo Grupo de Compras', new_buying_group_path, class: 'btn'
