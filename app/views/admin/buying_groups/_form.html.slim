@@ -1,5 +1,5 @@
 
-= simple_form_for @buying_group do |form|
+= simple_form_for [:admin, @buying_group] do |form|
   = form.input :name
   = form.input :date, as: :date, default: Date.today, order: [:day, :month, :year]
   = form.input :status, collection: BuyingGroup.statuses.keys, include_blank: false
