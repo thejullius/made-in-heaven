@@ -6,8 +6,8 @@
       tr
         th.col Nome
         th.col Data
-        th.col Status
+        th.col Ações
     tbody
       = render @buying_groups
 
-  = link_to 'Novo Grupo de Compras', new_admin_buying_group_path, class: 'btn btn-primary mt-2'
+  = link_to 'Novo Grupo de Compras', new_buying_group_path, class: 'btn btn-primary mt-2'

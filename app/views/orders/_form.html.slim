@@ -1,0 +1,19 @@
+= simple_form_for [@buying_group, @order] do |form|
+  .h2 Dados adicionais
+  = form.input :name, as: :hidden, input_html: { value: current_user.full_name }
+  = form.input :email, as: :hidden, input_html: { value: current_user.email }
+  = form.input :phone
+  = form.input :observation
+  .h2 Endereço
+  = form.input :zip_code, input_html: { data: { controller: "address" } }
+  = form.input :state
+  = form.input :city
+  = form.input :address
+  = form.input :address_number
+  = form.input :address_complement
+  .h2 Itens
+  = form.simple_fields_for :order_items do |order_item_form|
+    = order_item_form.input :batch_id, as: :hidden
+    = order_item_form.input :quantity, label: order_item_form.object.batch.description
+
+  = form.submit 'Salvar!', class: 'btn btn-primary mt-4'

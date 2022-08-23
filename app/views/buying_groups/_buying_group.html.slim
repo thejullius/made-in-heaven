@@ -1,0 +1,9 @@
+tr.table-active
+  td = buying_group.name
+  td = l(buying_group.date)
+  td
+    .btn-group.btn-group-sm
+      = link_to buying_group_path(buying_group), class: 'btn btn-default'
+        i.fa-solid.fa-eye
+      = link_to edit_buying_group_path(buying_group), class: 'btn btn-default'
+        i.fa-solid.fa-pen-to-square
