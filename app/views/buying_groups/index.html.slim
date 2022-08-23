@@ -1,13 +1,15 @@
 .container
-  .h1.mb-3 Grupos de compras
+  .h1.mb-3 = t('.buying_groups')
 
   table.table.table-hover
     thead
       tr
-        th.col Nome
-        th.col Data
-        th.col Ações
+        th.col = sort_link(BuyingGroup.human_attribute_name(:name), :name)
+        th.col.text-center = sort_link(BuyingGroup.human_attribute_name(:date), :date)
+        th.col.text-center = sort_link(BuyingGroup.human_attribute_name(:status), :status)
+        th.col.text-center = t('buying_groups.shared.actions')
     tbody
       = render @buying_groups
 
-  = link_to 'Novo Grupo de Compras', new_buying_group_path, class: 'btn btn-primary mt-2'
+  - if current_user.admin?
+    = link_to t('buying_groups.shared.new_buying_group'), new_buying_group_path, class: 'btn btn-primary mt-2'

@@ -1,4 +1,9 @@
 tr.table-active
   td = batch.description
-  td = batch.amount
-  td = batch.quantity
+  td.text-center = batch.amount
+  td.text-center = batch.quantity
+  - if current_user.admin?
+    td.text-center
+      .btn-group.btn-group-sm
+        = link_to edit_buying_group_batch_path(@buying_group, batch), class: 'btn btn-default', data: { 'bs-toggle': 'tooltip' }, title: t('.edit')
+          i.fa-solid.fa-pen-to-square

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'buying_groups#index'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :buying_groups do

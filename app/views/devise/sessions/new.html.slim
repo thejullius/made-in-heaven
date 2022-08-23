@@ -1,0 +1,8 @@
+.container
+  .card.mb-3
+    .card-header.h2 Olá, que bom te ter por aqui :)
+    .card-body
+      .h4.card-title Agora só precisamos te cadastrar. É rapidinho e vai nos ajudar na organização.
+      .card-text
+    .card-body
+      = button_to 'Entrar!', user_google_oauth2_omniauth_authorize_path, method: :post, :data => { turbo: 'false' }, class: 'btn btn-lg btn-primary w-100'

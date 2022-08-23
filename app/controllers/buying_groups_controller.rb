@@ -1,10 +1,11 @@
 class BuyingGroupsController < ApplicationController
+  before_action :authenticate!
   before_action :set_buying_group, only: %i[show edit update]
+  before_action :set_order_vars, :set_statuses, only: :index
 
   def index
-    @buying_groups = BuyingGroup.joins(:batches)
-                                .includes(:batches)
-                                .order(:status, :date)
+    @buying_groups = BuyingGroup.where(status: @statuses)
+                                .order(@order_column => @order_direction)
   end
 
   def show
@@ -32,7 +33,7 @@ class BuyingGroupsController < ApplicationController
 
   def update
     if @buying_group.update(buying_group_params)
-      redirect_to [:admin, @buying_group]
+      redirect_to @buying_group
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,6 +42,13 @@ class BuyingGroupsController < ApplicationController
   private
     def set_buying_group
       @buying_group = BuyingGroup.find(params[:id])
+    end
+
+    def set_statuses
+      @statuses = [:active, :finished]
+      @statuses << :inactive if current_user.admin?
+
+      @statuses
     end
 
     def buying_group_params

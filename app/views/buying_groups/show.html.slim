@@ -1,44 +1,52 @@
-.container
+.container-fluid
   .row
-    .col-4
+    .col-md-4.col-sm-12
       .card.border-primary.mb-3
-        .card-header.h3 Infomações
+        .card-header.h3 = t('.infos')
         dl.row.card-body
-          dt.col-sm-6 Nome
+          dt.col-sm-6 = BuyingGroup.human_attribute_name(:name)
           dd.col-sm-6 = @buying_group.name
-          dt.col-sm-6 Data
+          dt.col-sm-6 = BuyingGroup.human_attribute_name(:date)
           dd.col-sm-6 = l(@buying_group.date)
-          dt.col-sm-6 Status
+          dt.col-sm-6 = BuyingGroup.human_attribute_name(:status)
           dd.col-sm-6 = t(@buying_group.status, scope: 'enums.buying_group.status')
       .d-flex.flex-row
-        = link_to 'Participar!', new_buying_group_order_path(@buying_group), class: 'btn btn-primary', style: 'margin-right: 10px'
+        = link_to t('.new_order'), new_buying_group_order_path(@buying_group), class: 'btn btn-primary', style: 'margin-right: 10px'
+        - if current_user.admin?
+          = link_to t('buying_groups.shared.edit_buying_group'), edit_buying_group_path(@buying_group), class: 'btn btn-primary', style: 'margin-right: 10px'
 
-    .col-8
+    .col-md-8.col-sm-12.col-xs-8
       - if @batches.size.positive?
-        .h1 Lotes
+        .h1 = Batch.model_name.human(count: 2)
         table.table.table-hover
           thead
           tr
-            th.col Descrição
-            th.col Valor
-            th.col Quantidade
+            th.col = Batch.human_attribute_name(:description)
+            th.col.text-center = Batch.human_attribute_name(:amount)
+            th.col.text-center = Batch.human_attribute_name(:quantity)
+            - if current_user.admin?
+              th.col.text-center = t('buying_groups.shared.actions')
           tbody
             = render @batches
       - else
-        .h1 Sem lotes cadastrados
+        .h1 = t('.no_batches')
       .d-flex.flex-row
-        = link_to 'Editar grupo de Compra', edit_buying_group_path(@buying_group), class: 'btn btn-primary', style: 'margin-right: 10px'
-        = link_to 'Adicionar Lote', new_buying_group_batch_path(@buying_group), class: 'btn btn-primary'
+        - if current_user.admin?
+          = link_to t('.new_batch'), new_buying_group_batch_path(@buying_group), class: 'btn btn-primary'
 
-  - if @orders.size.positive?
-    .h1 Pedidos
-    table.table.table-hover
-      thead
-      tr
-        th.col Nome
-        th.col Items
-        th.col Status
-      tbody
-        = render @orders
-  - else
-    .h1 Sem pedidos cadastrados
+      br
+
+      - if @orders.size.positive?
+        .h1 = t('.orders')
+        table.table.table-hover
+          thead
+          tr
+            th.col = Order.human_attribute_name(:name)
+            th.col.text-center  = Order.human_attribute_name(:order_items)
+            th.col.text-center  = Order.human_attribute_name(:status)
+            - if current_user.admin?
+              th.col.text-center = t('buying_groups.shared.actions')
+          tbody
+            = render @orders
+      - else
+        .h1 = t('.no_orders')

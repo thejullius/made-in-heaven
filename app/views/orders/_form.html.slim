@@ -15,5 +15,7 @@
   = form.simple_fields_for :order_items do |order_item_form|
     = order_item_form.input :batch_id, as: :hidden
     = order_item_form.input :quantity, label: order_item_form.object.batch.description
+  .h2 Comprovante
+  = form.input :document, as: :file, input_html: { class: 'form-control file required', accept: 'image/*' }
 
   = form.submit 'Salvar!', class: 'btn btn-primary mt-4'

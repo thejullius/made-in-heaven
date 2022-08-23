@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate!
   before_action :set_buying_group, only: %i[new create]
 
   def new
@@ -9,7 +10,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = @buying_group.orders.build(order_params)
-    byebug
+
     if @order.save
       redirect_to @buying_group
     else
@@ -34,7 +35,7 @@ class OrdersController < ApplicationController
       params.require(:order)
             .permit(:buying_group_id, :name, :email, :phone,
                     :zip_code, :state, :city, :address, :address_number,
-                    :address_complement, :observation,
+                    :address_complement, :observation, :document,
                     order_items_attributes: %i[id batch_id order_id quantity])
     end
 end

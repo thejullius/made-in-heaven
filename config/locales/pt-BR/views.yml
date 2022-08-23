@@ -1,0 +1,24 @@
+pt-BR:
+  buying_groups:
+    shared:
+      edit_buying_group: Editar Grupo de Compras
+      new_buying_group: Novo Grupo de Compras
+      actions: Ações
+    index:
+      buying_groups: Grupos de compras
+      create_buying_group: Criar Grupo de Compras
+    show:
+      infos: Informações
+      new_order: Participar!
+      new_batch: Novo Lote
+      orders: Pedidos
+      no_batches: Sem lotes cadastrados
+      no_orders: Sem pedidos cadastrados
+    buying_group:
+      view: Visualizar
+      edit: Editar
+  batches:
+    shared:
+      edit_batch: Editar Lote
+      new_batch: Novo Lote
+      actions: Ações

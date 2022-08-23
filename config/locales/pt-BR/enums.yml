@@ -1,0 +1,7 @@
+pt-BR:
+  enums:
+    buying_group:
+      status:
+        inactive: Inativo
+        active: Ativo
+        finished: Finalizado

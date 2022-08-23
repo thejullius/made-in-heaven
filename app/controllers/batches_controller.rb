@@ -1,5 +1,5 @@
 class BatchesController < ::ApplicationController
-  before_action :set_buying_group
+  before_action :authenticate!, :set_buying_group
 
   def new
     @batch = @buying_group.batches.build

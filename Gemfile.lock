@@ -151,6 +151,8 @@ GEM
     msgpack (1.5.4-java)
     multi_json (1.15.0)
     multi_xml (0.6.0)
+    net-http (0.2.2)
+      uri
     net-imap (0.2.3)
       digest
       net-protocol
@@ -310,6 +312,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2022.3)
       tzinfo (>= 1.0.0)
+    uri (0.11.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -348,6 +351,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  net-http
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)

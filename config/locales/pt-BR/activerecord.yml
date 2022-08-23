@@ -1,0 +1,26 @@
+pt-BR:
+  activerecord:
+    models:
+      buying_group: Grupo de Compras
+      batch:
+        one: Lote
+        other: Lotes
+    attributes:
+      buying_group:
+        name: Nome
+        date: Data
+        status: Status
+      batch:
+        description: Descrição
+        amount: Valor
+        quantity: Quantidade
+      order:
+        name: Nome
+        order_items: Items
+        status: Status
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentes

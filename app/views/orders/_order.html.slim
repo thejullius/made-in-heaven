@@ -1,4 +1,10 @@
 tr.table-active
   td = order.name
-  td = order.order_items.size
-  td  Aguardando revisão
+  td.text-center = order.order_items.size
+  td.text-center
+    .badge.bg-primary Aguardando revisão
+  - if current_user.admin?
+    td.text-center
+      .btn-group.btn-group-sm
+        = link_to rails_blob_path(order.document, disposition: :attachment)
+          i.fa-solid.fa-eye

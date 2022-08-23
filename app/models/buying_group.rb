@@ -1,5 +1,5 @@
 class BuyingGroup < ApplicationRecord
-  validates :name, :date, presence: true
+  validates :name, :date, :status, presence: true
 
   has_many :batches
   has_many :orders

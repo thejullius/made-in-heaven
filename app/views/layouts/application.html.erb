@@ -13,7 +13,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Made In Heaven</a>
+        <a class="navbar-brand">Made In Heaven</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,9 +21,6 @@
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
               <a class="nav-link active" href="/buying_groups">Grupos de Compras</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
             </li>
           </ul>
           <% if current_user %>
@@ -33,13 +30,10 @@
                 <%= current_user.full_name %>
               </a>
               <div class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 42.4px, 0px);" data-popper-placement="bottom-start">
-                <div class="dropdown-divider"></div>
 
                 <%= button_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </div>
-          <% else %>
-            <%= button_to 'Login', user_google_oauth2_omniauth_authorize_path, method: :post, :data => { turbo: "false" }, class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
