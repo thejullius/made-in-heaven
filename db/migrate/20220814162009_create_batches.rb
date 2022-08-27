@@ -6,6 +6,10 @@ class CreateBatches < ActiveRecord::Migration[7.0]
       t.string :description, null: false
       t.decimal :amount, null: false, precision: 14, scale: 2
       t.integer :quantity, null: false
+      t.integer :width, null: false
+      t.integer :height, null: false
+      t.integer :length, null: false
+      t.integer :weight, null: false
 
       t.timestamps
     end

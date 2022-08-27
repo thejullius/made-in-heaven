@@ -36,6 +36,8 @@ class BatchesController < ::ApplicationController
     end
 
     def batch_params
-      params.require(:batch).permit(:buying_group_id, :description, :amount, :quantity)
+      params.require(:batch)
+            .permit(:buying_group_id, :description, :amount,
+                    :quantity, :width, :height, :length, :weight)
     end
 end

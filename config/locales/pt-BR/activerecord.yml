@@ -14,10 +14,25 @@ pt-BR:
         description: Descrição
         amount: Valor
         quantity: Quantidade
+        width: Largura
+        height: Altura
+        length: Comprimento
+        weight: Peso
       order:
         name: Nome
+        email: Email
+        phone: Telefone
+        observation: Observações
+        zip_code: CEP
+        state: Estado
+        city: Cidade
+        address: Endereço
+        address_number: Número
+        address_complement: Complemento
         order_items: Items
         status: Status
+        document: Comprovante de Pagamento
+        shipment_service: Frete
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

@@ -5,4 +5,6 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items
 
   validates :name, :email, :phone, :zip_code, :state, :city, :address, :address_number, :document, presence: true
+
+  enum status: { awaiting_review: 0, reviewed: 1, denied: 2, posted: 3 }
 end

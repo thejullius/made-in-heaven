@@ -9,4 +9,10 @@ Rails.application.routes.draw do
       resources :order_items
     end
   end
+
+  resources :orders do
+    collection do
+      post :shipment_options
+    end
+  end
 end

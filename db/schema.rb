@@ -47,6 +47,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_134658) do
     t.string "description", null: false
     t.decimal "amount", precision: 14, scale: 2, null: false
     t.integer "quantity", null: false
+    t.integer "width", null: false
+    t.integer "height", null: false
+    t.integer "length", null: false
+    t.integer "weight", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buying_group_id"], name: "index_batches_on_buying_group_id"
@@ -83,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_134658) do
     t.integer "status", default: 0
     t.string "address_complement"
     t.string "observation"
+    t.integer "shipment_service", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buying_group_id"], name: "index_orders_on_buying_group_id"
@@ -98,7 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_134658) do
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "remember_created_a"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

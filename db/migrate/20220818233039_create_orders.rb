@@ -14,6 +14,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.integer :status, default: 0
       t.string :address_complement
       t.string :observation
+      t.integer :shipment_service, null: false
 
 
       t.timestamps

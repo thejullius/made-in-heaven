@@ -2,8 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    console.log('address_controller is working!')
-
     this.element.addEventListener('blur', (event) => {
       var zipCode = event.target.value.replace(/\D/g, '')
 
