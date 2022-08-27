@@ -1,0 +1,5 @@
+tr.table-active
+  td = order_item.batch.description
+  td.text-center = order_item.batch.amount
+  td.text-center = order_item.quantity
+  td.text-center = (order_item.batch.amount * order_item.quantity)

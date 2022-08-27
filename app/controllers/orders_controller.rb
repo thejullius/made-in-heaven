@@ -8,6 +8,11 @@ class OrdersController < ApplicationController
     set_order_items
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
+  end
+
   def create
     @order = @buying_group.orders.build(order_params)
 
@@ -37,8 +42,14 @@ class OrdersController < ApplicationController
     response = MelhorEnvio::CalculateShippingService.call(params[:zip_code], @packages)
 
     @options = response.map do |item|
-        ["#{item['company']['name']} - #{item['name']} - R$ #{item['price']} - #{item['delivery_time']} dias uteis", item['id']]
+      service = I18n.t(Order.shipment_services.invert[item['id']], scope: 'enums.order.shipment_service')
+      const = "R$ #{item['price']}"
+      delivery_time = "#{item['delivery_time']} dias uteis"
+      custom_id = "#{item['id']}|#{item['price']}"
+
+      ["🚚 #{service} 💰 #{const} 🕒 #{delivery_time}", "#{custom_id}"]
     end
+
     respond_to do |format|
       format.turbo_stream
     end
@@ -60,7 +71,14 @@ class OrdersController < ApplicationController
       params.require(:order)
             .permit(:buying_group_id, :name, :email, :phone, :shipment_service,
                     :zip_code, :state, :city, :address, :address_number,
-                    :address_complement, :observation, :document,
+                    :address_complement, :observation, :document, :shipment_cost,
                     order_items_attributes: %i[id batch_id order_id quantity])
+            .tap do |param|
+              shipment_service, shipment_cost = param[:shipment_service].split('|')
+
+              param[:shipment_service] = shipment_service.to_i
+              param[:shipment_cost] = shipment_cost
+            end
+
     end
 end

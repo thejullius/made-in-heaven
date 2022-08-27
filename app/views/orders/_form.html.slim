@@ -1,4 +1,4 @@
-= simple_form_for [@buying_group, @order], wrapper: :floating_labels_form, wrapper_mappings: { select: :floating_labels_select } do |form|
+= simple_form_for [@buying_group, @order] do |form|
   .h2.mt-3 Itens
   = form.simple_fields_for :order_items do |order_item_form|
     = order_item_form.input :batch_id, as: :hidden
@@ -16,13 +16,13 @@
   = form.input :name, as: :hidden, input_html: { value: current_user.full_name }
   = form.input :email, as: :hidden, input_html: { value: current_user.email }
   = form.input :phone
-  = form.input :observation, input_html: { aria: { describedby: "button-addon2" } }
+  = form.input :observation
 
   .h2.mt-3 Opções de Envio
   / todo i18n
   = form.input :shipment_service do
     .input-group
-      = form.input_field :shipment_service, collection: [], prompt: 'Adicione itens, preencha o CEP e clique no botão abaixo', class: 'form-select'
+      = form.input_field :shipment_service, collection: [], prompt: 'Adicione itens e preencha o CEP antes 😊', class: 'form-select'
       button.btn.btn-primary data-controller="shipping" Calcular frete
 
   .h2.mt-3 Comprovante

@@ -15,7 +15,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.string :address_complement
       t.string :observation
       t.integer :shipment_service, null: false
-
+      t.decimal :shipment_cost, null: false, precision: 14, scale: 2
 
       t.timestamps
     end

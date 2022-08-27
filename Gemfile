@@ -49,7 +49,6 @@ gem "pg", "~> 1.4.1"
 gem "slim-rails"
 gem "simple_form"
 gem "bootstrap"
-gem "jquery-rails"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'

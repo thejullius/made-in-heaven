@@ -6,7 +6,13 @@ pt-BR:
         active: Ativo
         finished: Finalizado
     order:
-      awaiting_review: Aguardando Revisão
-      reviewed: Aguardando Envio
-      denied: Negado
-      posted: Postado
+      status:
+        awaiting_review: Aguardando Revisão
+        reviewed: Aguardando Envio
+        denied: Negado
+        posted: Postado
+      shipment_service:
+        correios_pac: Correios | PAC
+        correios_sedex: Correios | SEDEX
+        jadlog_economic: Jadlog | Econômico
+        jadlog_express: Jadlog | Expresso

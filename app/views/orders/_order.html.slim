@@ -2,9 +2,9 @@ tr.table-active
   td = order.name
   td.text-center = order.order_items.size
   td.text-center
-    .badge.bg-primary Aguardando revisão
+    .badge.bg-primary = t(order.status, scope: 'enums.order.status')
   - if current_user.admin?
     td.text-center
       .btn-group.btn-group-sm
-        = link_to rails_blob_path(order.document, disposition: :attachment)
+        = link_to buying_group_order_path(@buying_group, order)
           i.fa-solid.fa-eye

@@ -19,7 +19,8 @@ module MelhorEnvio
         to: {
           postal_code: @zip_code
         },
-        products: @products
+        products: @products,
+        services: Order.shipment_services.values.join(',')
       }
     end
   end

@@ -88,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_134658) do
     t.string "address_complement"
     t.string "observation"
     t.integer "shipment_service", null: false
+    t.decimal "shipment_cost", precision: 14, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buying_group_id"], name: "index_orders_on_buying_group_id"

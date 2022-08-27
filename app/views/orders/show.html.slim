@@ -1,0 +1,56 @@
+.container-fluid
+  .row
+    .col-md-4.col-sm-12
+      .card.border-primary.mb-3
+        .card-header.h3 = t('.infos')
+        dl.row.card-body
+          dt.col-sm-6 = Order.human_attribute_name(:name)
+          dd.col-sm-6 = @order.name
+          dt.col-sm-6 = Order.human_attribute_name(:email)
+          dd.col-sm-6 = @order.email
+          dt.col-sm-6 = Order.human_attribute_name(:phone)
+          dd.col-sm-6 = @order.phone
+          dt.col-sm-6 = Order.human_attribute_name(:zip_code)
+          dd.col-sm-6 = @order.zip_code
+          dt.col-sm-6 = Order.human_attribute_name(:state)
+          dd.col-sm-6 = @order.state
+          dt.col-sm-6 = Order.human_attribute_name(:city)
+          dd.col-sm-6 = @order.city
+          dt.col-sm-6 = Order.human_attribute_name(:address)
+          dd.col-sm-6 = @order.address
+          dt.col-sm-6 = Order.human_attribute_name(:address_number)
+          dd.col-sm-6 = @order.address_number
+          - if @order.address_complement.present?
+            dt.col-sm-6 = Order.human_attribute_name(:address_complement)
+            dd.col-sm-6 = @order.address_complement
+          - if @order.observation.present?
+            dt.col-sm-6 = Order.human_attribute_name(:observation)
+            dd.col-sm-6 = @order.observation
+          dt.col-sm-6 = Order.human_attribute_name(:document)
+          dd.col-sm-6 = link_to rails_blob_path(@order.document, disposition: :attachment)
+            i.fa-solid.fa-download
+      .d-flex.flex-row
+        / = link_to t('.new_order'), new_buying_group_order_path(@buying_group), class: 'btn btn-primary', style: 'margin-right: 10px'
+        / - if current_user.admin?
+        /   = link_to t('buying_groups.shared.edit_buying_group'), edit_buying_group_path(@buying_group), class: 'btn btn-primary', style: 'margin-right: 10px'
+    .col-md-8.col-sm-12.col-xs-8
+      .h1 Items
+      table.table.table-hover
+        thead
+        tr
+          th.col Descrição
+          th.col.text-center Valor
+          th.col.text-center Quantidade
+          th.col.text-center Total
+        tbody
+          = render @order_items
+        tr.table-active
+          td = t(@order.shipment_service, scope: 'enums.order.shipment_service')
+          td.text-center = @order.shipment_cost
+          td.text-center -
+          td.text-center = @order.shipment_cost
+        tr.pt-3
+          td Total do Pedido
+          td.text-center
+          td.text-center
+          td.text-center = @order.items_and_shipment_sum
